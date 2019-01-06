@@ -9,8 +9,6 @@ class CreateT4Logs < ActiveRecord::Migration[5.2]
       t.string :name2
       t.string :name3
       t.json :documents
-
-      t.timestamps
     end
     add_index :t4_logs, :name1
     add_index :t4_logs, :name2
