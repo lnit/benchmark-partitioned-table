@@ -11,6 +11,8 @@ class CreateT1Logs < ActiveRecord::Migration[5.2]
       t.json :documents
     end
     add_index :t1_logs, :company_guid
+    add_index :t1_logs, :created_at
+    add_index :t1_logs, :event_at
     add_index :t1_logs, :name1
     add_index :t1_logs, :name2
     add_index :t1_logs, :name3

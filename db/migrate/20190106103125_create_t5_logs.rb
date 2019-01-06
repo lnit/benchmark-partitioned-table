@@ -10,6 +10,8 @@ class CreateT5Logs < ActiveRecord::Migration[5.2]
       t.string :name3
       t.json :documents
     end
+    add_index :t5_logs, :created_at
+    add_index :t5_logs, :event_at
     add_index :t5_logs, :name1
     add_index :t5_logs, :name2
     add_index :t5_logs, :name3
