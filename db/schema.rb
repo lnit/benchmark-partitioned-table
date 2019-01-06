@@ -44,10 +44,10 @@ ActiveRecord::Schema.define(version: 2019_01_06_103125) do
     t.index ["name3"], name: "index_t2_logs_on_name3"
   end
 
-  create_table "t3_logs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "uuid"
-    t.string "company_guid"
-    t.datetime "created_at", precision: 6
+  create_table "t3_logs", primary_key: ["company_guid", "created_at", "uuid"], options: "ENGINE=InnoDB DEFAULT CHARSET=utf8\n/*!50100 PARTITION BY RANGE (year(`created_at`))\n(PARTITION p2017 VALUES LESS THAN (2018) ENGINE = InnoDB,\n PARTITION p2018 VALUES LESS THAN (2019) ENGINE = InnoDB,\n PARTITION p2019 VALUES LESS THAN (2020) ENGINE = InnoDB,\n PARTITION p202x VALUES LESS THAN MAXVALUE ENGINE = InnoDB) */", force: :cascade do |t|
+    t.string "uuid", null: false
+    t.string "company_guid", null: false
+    t.datetime "created_at", precision: 6, null: false
     t.datetime "event_at", precision: 6
     t.string "name1"
     t.string "name2"
