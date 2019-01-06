@@ -3,8 +3,8 @@ class CreateT1Logs < ActiveRecord::Migration[5.2]
     create_table :t1_logs do |t|
       t.string :uuid
       t.string :company_guid
-      t.datetime :created_at
-      t.datetime :event_at
+      t.datetime :created_at, limit: 6
+      t.datetime :event_at, limit: 6
       t.string :name1
       t.string :name2
       t.string :name3
