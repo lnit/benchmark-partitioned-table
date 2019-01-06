@@ -1,6 +1,6 @@
 class CreateT1Logs < ActiveRecord::Migration[5.2]
   def change
-    create_table :t1_logs do |t|
+    create_table :t1_logs, primary_key: [:uuid] do |t|
       t.string :uuid
       t.string :company_guid
       t.datetime :created_at, limit: 6
@@ -12,6 +12,7 @@ class CreateT1Logs < ActiveRecord::Migration[5.2]
 
       t.timestamps
     end
+    add_index :t1_logs, :company_guid
     add_index :t1_logs, :name1
     add_index :t1_logs, :name2
     add_index :t1_logs, :name3

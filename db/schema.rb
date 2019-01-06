@@ -12,8 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2019_01_06_103125) do
 
-  create_table "t1_logs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "uuid"
+  create_table "t1_logs", primary_key: "uuid", id: :string, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "company_guid"
     t.datetime "created_at", null: false
     t.datetime "event_at", precision: 6
@@ -22,6 +21,7 @@ ActiveRecord::Schema.define(version: 2019_01_06_103125) do
     t.string "name3"
     t.json "documents"
     t.datetime "updated_at", null: false
+    t.index ["company_guid"], name: "index_t1_logs_on_company_guid"
     t.index ["name1"], name: "index_t1_logs_on_name1"
     t.index ["name2"], name: "index_t1_logs_on_name2"
     t.index ["name3"], name: "index_t1_logs_on_name3"
